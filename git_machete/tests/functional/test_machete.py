@@ -2643,11 +2643,13 @@ class MacheteTester(unittest.TestCase):
                 .push()
         )
         self.launch_command('discover', '-y')
-        self.repo_sandbox\
-            .check_out("master")\
-            .new_branch('mars')\
-            .commit()\
-            .check_out("master")
+        (
+            self.repo_sandbox
+                .check_out("master")
+                .new_branch('mars')
+                .commit()
+                .check_out("master")
+        )
         self.launch_command('github', 'sync')
 
         expected_status_output = (
@@ -2893,11 +2895,13 @@ class MacheteTester(unittest.TestCase):
                 .commit()
         )
         self.launch_command('discover')
-        self.repo_sandbox\
-            .check_out("master")\
-            .new_branch('mars')\
-            .commit()\
-            .check_out("master")
+        (
+            self.repo_sandbox
+                .check_out("master")
+                .new_branch('mars')
+                .commit()
+                .check_out("master")
+        )
         self.launch_command('clean')
 
         expected_status_output = (
